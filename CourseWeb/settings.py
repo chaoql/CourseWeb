@@ -39,7 +39,13 @@ INSTALLED_APPS = [
     'apps.courses.apps.CoursesConfig',
     'apps.operations.apps.OperationsConfig',
     'apps.organizations.apps.OrganizationsConfig',
+    'crispy_forms',
+    'xadmin.apps.XAdminConfig',
+    'reversion',
+    'crispy_bootstrap3',
+    'django.conf'
 ]
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -56,7 +62,7 @@ ROOT_URLCONF = 'CourseWeb.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -105,25 +111,28 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 AUTH_USER_MODEL = "users.UserProfile"  # 设置重写的用户模型类位置
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [  # 共用一个static文件夹的话需要添加，使项目可以找到static文件静态资源(django可以自动在各个app下查找static资源)
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'static'),
+    # os.path.join(BASE_DIR, 'xadmin/static/xadmin'),
+    # os.path.join(BASE_DIR, 'xadmin/static'),
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

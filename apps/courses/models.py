@@ -11,11 +11,8 @@ class Course(BaseModel):
     course_org = models.ForeignKey(CourseOrg, verbose_name=u"课程机构", null=True, blank=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=50, verbose_name="课程名")
     desc = models.CharField(max_length=300, verbose_name="课程描述")
-    # detail = UEditorField(verbose_name=u"课程详情", width=600, height=300, imagePath="courses/ueditor/",
-    #                       filePath="courses/ueditor/", default='')
-    detail = models.TextField(verbose_name="课程详情")
     # is_banner = models.BooleanField(default=False, verbose_name=u"是否轮播")
-    teacher = models.ForeignKey(Teacher, verbose_name=u"讲师", null=True, blank=True, on_delete=models.CASCADE)
+    teacher = models.ForeignKey(Teacher, verbose_name="讲师", null=True, blank=True, on_delete=models.CASCADE)
     degree = models.CharField(verbose_name="难度", choices=(("cj", "初级"), ("zj", "中级"), ("gj", "高级")),
                               max_length=2)
     learn_times = models.IntegerField(default=0, verbose_name="学习时长(分钟数)")
@@ -27,10 +24,15 @@ class Course(BaseModel):
     tag = models.CharField(default="", verbose_name="课程标签", max_length=10)
     youneed_know = models.CharField(default="", max_length=300, verbose_name="课程须知")
     teacher_tell = models.CharField(default="", max_length=300, verbose_name="老师告诉你")
-
+    # detail = UEditorField(verbose_name="课程详情", width=600, height=300, imagePath="courses/ueditor/",
+    #                       filePath="courses/ueditor/", default='')
+    detail = models.TextField(verbose_name="课程详情")
     class Meta:
         verbose_name = "课程信息"
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name
 
 
 class Lesson(BaseModel):
@@ -46,6 +48,9 @@ class Lesson(BaseModel):
         verbose_name = "课程章节"
         verbose_name_plural = verbose_name
 
+    def __str__(self):
+        return self.name
+
 
 class Video(BaseModel):
     """
@@ -55,9 +60,13 @@ class Video(BaseModel):
     name = models.CharField(max_length=100, verbose_name="视频名")
     learn_time = models.IntegerField(default=0, verbose_name="学习时长(分钟数)")
     url = models.CharField(max_length=200, default="", verbose_name="访问地址")
+
     class Meta:
         verbose_name = "视频"
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name
 
 
 class CourseResource(BaseModel):
@@ -71,3 +80,6 @@ class CourseResource(BaseModel):
     class Meta:
         verbose_name = "课程资源"
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name

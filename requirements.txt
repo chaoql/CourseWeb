@@ -1,0 +1,8 @@
+certifi @ file:///C:/b/abs_85o_6fm0se/croot/certifi_1671487778835/work/certifi
+Django==2.2
+mysqlclient @ file:///C:/Users/14153/Downloads/mysqlclient-1.4.6-cp37-cp37m-win_amd64.whl
+Pillow==9.5.0
+PyMySQL==1.0.3
+pytz==2023.3
+sqlparse==0.4.4
+wincertstore==0.2
