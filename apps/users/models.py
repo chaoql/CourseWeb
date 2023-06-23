@@ -5,7 +5,7 @@ from django.contrib.auth.models import AbstractUser
 
 GENDER_CHOICES = (
     ("male", "男"),
-    ("famale", "女")
+    ("famale", "女"),
 )
 
 

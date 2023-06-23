@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'xadmin.apps.XAdminConfig',
     'reversion',
     'crispy_bootstrap3',
-    'django.conf'
+    'django.conf',
+    'captcha',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
