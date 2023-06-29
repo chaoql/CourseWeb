@@ -45,7 +45,9 @@ INSTALLED_APPS = [
     'crispy_bootstrap3',
     'django.conf',
     'captcha',
+    'pure_pagination',
 ]
+
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE = [
@@ -71,6 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media'
             ],
         },
     },
@@ -129,11 +132,17 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/'  # 前端template引入静态文件的路径
 STATICFILES_DIRS = [  # 共用一个static文件夹的话需要添加，使项目可以找到static文件静态资源(django可以自动在各个app下查找static资源)
     os.path.join(BASE_DIR, 'static'),
-    # os.path.join(BASE_DIR, 'xadmin/static/xadmin'),
-    # os.path.join(BASE_DIR, 'xadmin/static'),
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = "/media/"
+
+# 分页相关设置
+PAGINATION_SETTINGS = {
+    'PAGE_RANGE_DISPLAYED': 5,
+    'MARGIN_PAGES_DISPLAYED': 1,
+    'SHOW_FIRST_PAGE_WHEN_INVALID': True,
+}

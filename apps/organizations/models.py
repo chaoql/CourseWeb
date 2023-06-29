@@ -30,6 +30,17 @@ class CourseOrg(BaseModel):
     city = models.ForeignKey(City, verbose_name="所在城市", on_delete=models.CASCADE)
     students = models.IntegerField(default=0, verbose_name="学习人数")
     course_nums = models.IntegerField(default=0, verbose_name="课程数")
+    is_auth = models.BooleanField(default=False, verbose_name="是否认证")
+    is_gold = models.BooleanField(default=False, verbose_name="是否金牌")
+
+    def courses(self):
+        """
+        course含有courseorg外键，那么就可以反向取出所有外键为self.org的course
+        :return: course信息集合
+        """
+
+        courses = self.course_set.filter(is_classics=True)[:3]
+        return courses
 
     class Meta:
         verbose_name = u"课程机构"
@@ -57,3 +68,6 @@ class Teacher(BaseModel):
 
     def __str__(self):
         return self.name
+
+    def course_nums(self):
+        return self.course_set.all().count()

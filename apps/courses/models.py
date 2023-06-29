@@ -27,6 +27,8 @@ class Course(BaseModel):
     # detail = UEditorField(verbose_name="课程详情", width=600, height=300, imagePath="courses/ueditor/",
     #                       filePath="courses/ueditor/", default='')
     detail = models.TextField(verbose_name="课程详情")
+    is_classics = models.BooleanField(default=False, verbose_name="是否经典")
+
     class Meta:
         verbose_name = "课程信息"
         verbose_name_plural = verbose_name
