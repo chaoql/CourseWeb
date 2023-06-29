@@ -1,2 +1,2 @@
-# CourseWeb
-A course website in python using django.
+# CourseWeb/线上教育平台
+平台使用python语言且基于django框架开发，正在开发中......
