@@ -41,7 +41,6 @@ class OrgCourseView(View):
                                                                          fav_type=2):
             has_fav = True
 
-        # 对课程机构数据进行分页
         try:
             page = request.GET.get('page', 1)
         except PageNotAnInteger:
@@ -122,7 +121,6 @@ class OrgView(View):
         all_orgs = CourseOrg.objects.all()
         all_cities = City.objects.all()
         hot_orgs = all_orgs.order_by("-click_nums")[:3]
-
         # 通过机构类别对课程机构进行筛选
         category = request.GET.get("ct", "")
         if category:

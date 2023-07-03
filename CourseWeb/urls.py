@@ -16,6 +16,7 @@ urlpatterns = [
     path("user/", include("apps.users.urls")),
     path("org/", include(("apps.organizations.urls", "organizations"), namespace="org")),
     path("op/", include(("apps.operations.urls", "operations"), namespace="op")),
+    path("course/", include(("apps.courses.urls", "courses"), namespace="course")),
     path('captcha/', include('captcha.urls')),  # 图形验证模块的urls配置文件
     # 配置上传文件的访问url
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
