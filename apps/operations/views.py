@@ -75,6 +75,18 @@ class AddFavView(View):
                 user_fav.fav_id = fav_id
                 user_fav.user = request.user
                 user_fav.fav_type = fav_type
+                if fav_type == 1:
+                    course = Course.objects.get(id=fav_id)
+                    course.fav_nums += 1
+                    course.save()
+                elif fav_type == 2:
+                    courseOrg = CourseOrg.objects.get(id=fav_id)
+                    courseOrg.fav_nums += 1
+                    courseOrg.save()
+                elif fav_type == 3:
+                    teacher = Teacher.objects.get(id=fav_id)
+                    teacher.fav_nums += 1
+                    teacher.save()
                 user_fav.save()
                 return JsonResponse({
                     "status": "success",

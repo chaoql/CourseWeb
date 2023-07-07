@@ -4,6 +4,29 @@ from captcha.fields import CaptchaField
 from apps.users.models import UserProfile
 
 
+class ChangePwdForm(forms.Form):
+    password1 = forms.CharField(required=True, min_length=6)
+    password2 = forms.CharField(required=True, min_length=6)
+
+    def clean(self):
+        if 'password1' in self.cleaned_data and 'password2' in self.cleaned_data and self.cleaned_data['password1'] != \
+                self.cleaned_data['password2']:
+            raise forms.ValidationError("密码不一致")
+        return self.cleaned_data
+
+
+class UserInfoForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ["nick_name", "gender", "birthday", "address"]
+
+
+class UploadImageForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ["image"]
+
+
 class LoginForm(forms.Form):
     """
     实现表单验证功能

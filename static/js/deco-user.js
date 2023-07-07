@@ -86,7 +86,7 @@ $(function(){
             cache: false,
             type: "POST",
             dataType:'json',
-            url:"/users/update/pwd/",
+            url:"/user/update/pwd/",
             data:$('#jsResetPwdForm').serialize(),
             async: true,
             success: function(data) {
@@ -94,6 +94,8 @@ $(function(){
                     Dml.fun.showValidateError($("#pwd"), data.password1);
                 }else if(data.password2){
                     Dml.fun.showValidateError($("#repwd"), data.password2);
+                }else if(data.__all__){
+                    Dml.fun.showValidateError($("#repwd"), data.__all__);
                 }else if(data.status == "success"){
                     Dml.fun.showTipsDialog({
                         title:'提交成功',
@@ -160,7 +162,7 @@ $(function(){
             cache: false,
             type: 'post',
             dataType:'json',
-            url:"/users/info/",
+            url:"/user/info/",
             data:$jsEditUserForm.serialize(),
             async: true,
             beforeSend:function(XMLHttpRequest){

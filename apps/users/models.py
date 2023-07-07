@@ -39,6 +39,9 @@ class UserProfile(AbstractUser):
         verbose_name = "用户信息"
         verbose_name_plural = verbose_name
 
+    def unread_nums(self):
+        return self.usermessage_set.filter(has_read=False).count()
+
     def __str__(self):
         """返回一个对象的描述信息"""
         if self.nick_name:

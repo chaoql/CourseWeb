@@ -123,11 +123,6 @@ class CourseDetailView(View):
         if request.user.is_authenticated and UserFavorite.objects.filter(user=request.user, fav_id=course.course_org.id,
                                                                          fav_type=2):
             has_fav_org = True
-        # 通过课程的tag字段做课程的推荐
-        # tag = course.tag
-        # related_courses = []
-        # if tag:
-        #     related_courses = Course.objects.filter(tag=tag).exclude(id=course.id)[:3]
         # 通过coursetag表做课程推荐
         tags = course.coursetag_set.all()
         tag_list = [tag.tag for tag in tags]

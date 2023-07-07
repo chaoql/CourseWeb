@@ -51,7 +51,7 @@ class UserFavorite(BaseModel):
 
 
 class UserMessage(BaseModel):
-    user = models.IntegerField(default=0, verbose_name="接收用户")
+    user = models.ForeignKey(UserProfile, verbose_name="接收用户", on_delete=models.CASCADE)
     message = models.CharField(max_length=500, verbose_name="消息内容")
     has_read = models.BooleanField(default=False, verbose_name="是否已读")
 

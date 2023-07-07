@@ -13,7 +13,7 @@ urlpatterns = [
     # path('admin/', admin.site.urls),
     path('xadmin/', xadmin.site.urls),
     path('', TemplateView.as_view(template_name="index.html"), name="index"),  # 类视图后必须加as_view()
-    path("user/", include("apps.users.urls")),
+    path("user/", include(("apps.users.urls",  "users"), namespace="user")),
     path("org/", include(("apps.organizations.urls", "organizations"), namespace="org")),
     path("op/", include(("apps.operations.urls", "operations"), namespace="op")),
     path("course/", include(("apps.courses.urls", "courses"), namespace="course")),
